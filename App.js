@@ -1,40 +1,39 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
-import Flexbox from "./Flexbox";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  FlatList,
+} from "react-native";
+import GoalItem from "./components/GoalItem";
+import GoalInput from "./components/GoalInput";
 
 export default function App() {
-  const [outputText, setOutputText] = useState("Open up App.js");
+  const [courseGoals, setCourseGoals] = useState([]);
+
   return (
-    <View>
-      <Flexbox />
-      {/* <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <TextInput
-          placeholder='Course Goal'
-          style={{
-            width: "80%",
-            borderColor: "black",
-            borderWidth: 2,
-            padding: 10,
-          }}
-        />
-        <Button title='Add' />
-      </View> */}
+    <View style={screen}>
+      <GoalInput setCourseGoals={setCourseGoals} />
+      <FlatList
+        keyExtractor={(item) => item.id}
+        data={courseGoals}
+        renderItem={(itemData) => (
+          <GoalItem
+            onDelete={() => console.log("Touchable Components")}
+            title={itemData.item.value}
+          />
+        )}
+      ></FlatList>
     </View>
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });
+const styles = StyleSheet.create({
+  screen: {
+    padding: 50,
+  },
+});
+
+const { screen, inputContainer, input, listItem } = styles;
