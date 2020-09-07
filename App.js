@@ -6,6 +6,12 @@ import GoalInput from "./components/GoalInput";
 export default function App() {
   const [courseGoals, setCourseGoals] = useState([]);
 
+  const reomveGoalHandler = (goalId) => {
+    setCourseGoals((currentGoals) => {
+      return currentGoals.filter((goal) => goal.id !== goalId);
+    });
+  };
+
   return (
     <View style={screen}>
       <GoalInput setCourseGoals={setCourseGoals} />
@@ -14,7 +20,8 @@ export default function App() {
         data={courseGoals}
         renderItem={(itemData) => (
           <GoalItem
-            onDelete={() => console.log("Touchable Components")}
+            id={itemData.item.id}
+            onDelete={reomveGoalHandler}
             title={itemData.item.value}
           />
         )}
