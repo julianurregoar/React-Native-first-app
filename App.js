@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
 
@@ -36,4 +29,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const { screen, inputContainer, input, listItem } = styles;
+const { screen } = styles;
