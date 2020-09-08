@@ -1,2 +1,2 @@
 # React-Native-first-app
-First React Native App
+React Native Simple App
